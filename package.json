@@ -1,0 +1,24 @@
+{
+  "name": "kotizkalkulilo",
+  "version": "1.0.0",
+  "description": "Price calculator for IJS 2017 (ijs.hu)",
+  "main": "kalkulilo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bnt0/kotizkalkulilo.git"
+  },
+  "author": "Balint Rikker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bnt0/kotizkalkulilo/issues"
+  },
+  "homepage": "https://github.com/bnt0/kotizkalkulilo#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
