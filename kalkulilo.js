@@ -73,7 +73,7 @@ function populate_cost_fields() {
     document.getElementById("paypal_charge").innerHTML = paypal_charge.toFixed(2);
 
     var total_cost = total_cost_no_paypal + paypal_charge;
-    document.getElementById("total_cost").innerHTML = total_cost;
+    document.getElementById("total_cost").innerHTML = total_cost + " &euro;";
 
 }
 
