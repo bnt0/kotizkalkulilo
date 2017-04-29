@@ -1,4 +1,15 @@
-function calcpayments() {
+// Setup after jQuery is initialized
+$(document).ready(function() {
+    // Set up event listeners
+    
+    // Calculate price after button is clicked, but before modal is shown
+    $('#calculatedPriceModal').on('show.bs.modal', function() {
+        populate_cost_fields();
+    });
+
+})
+
+function populate_cost_fields() {
     // Calculate program cost
     var age_num = $('#formAgeInput').val();
     var age_category = getAgeCategory(age_num);
