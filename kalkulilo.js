@@ -245,3 +245,13 @@ function toggle_all_ids(idname, start_id, end_id) {
     }
 }
 
+// Toggles all checkboxes with breakfast/lunch/dinner for the given number,
+// (if they exist)
+function toggle_day(id) {
+    var tags = ["break", "lunch", "dinner"];
+    tags.forEach(function(tag) {
+        var checkbox = document.getElementById(tag + id);
+        if (checkbox !== null)
+            checkbox.checked = !checkbox.checked;
+    });
+}
