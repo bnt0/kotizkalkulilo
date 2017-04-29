@@ -1,23 +1,25 @@
 function calcpayments() {
-    var form = document.getElementById("pricecalc");
-
     // Calculate program cost
-    var age_num = form.age.value;
+    var age_num = $('#formAgeInput').val();
     var age_category = getAgeCategory(age_num);
+    console.log("Age: " + age_num + ', category: ' + age_category);
 
-    var land = form.land;
-    var land_category = land.options[land.selectedIndex].value;
+    var land_category = $('#formLandCategoryRadio input:checked').val();
+    console.log("Land Category:", land_category);
 
-    var days_program = form.number_of_days_program.value;
+    var days_program = $('#formDaysOfProgramInput').val();
+    console.log("Program days:", days_program);
 
-    var nights_accom = form.number_of_days_accomodation.value;
+    var nights_accom = $('#formNightsOfAccomInput').val();
+    console.log("Nights accommodation:", nights_accom);
+
 
     // prepay:
     // 0: 30 may
     // 1: 30 june
     // 2: no
-    var prepay_field = form.prepay;
-    var prepay_category = prepay_field.options[prepay_field.selectedIndex].value;
+    var prepay_category = $('#formPrepayUntilInput input:checked').val();
+    console.log("Prepay by category", prepay_category);
 
     var program_cost = getProgramCost(land_category, age_category, days_program, prepay_category);
 
@@ -26,9 +28,9 @@ function calcpayments() {
 
 
     // Calculate accommodation cost
-    var accom_type_field = form.accom_type;
-    var accom_type = accom_type_field.options[accom_type_field.selectedIndex].value;
+    var accom_type = $('#formAccommodationTypeInput input:checked').val();
     var accom_cost = getAccommodationCost(nights_accom, accom_type);
+    console.log("Accommodation type", accom_type);
     document.getElementById("accom_cost").innerHTML = accom_cost;
 
     // Food cost
@@ -37,12 +39,14 @@ function calcpayments() {
     
     // HEJ discount
     // TODO warn if age is > 30
-    var is_hej_member = form.hej_member.checked;
+    var is_hej_member = $('#formHEJMemberCheckbox').is(':checked');
+    console.log('HEJ member', is_hej_member);
     var hej_discount  = getHEJDiscount(is_hej_member, days_program);
     document.getElementById("hej_discount").innerHTML = hej_discount;
 
     // Unofficial invitation letter
-    var is_invitation = form.invitation.checked;
+    var is_invitation = $('#formInvitationCheckbox').is(':checked');
+    console.log('Invitation', is_invitation);
     var invitation_cost  = is_invitation ? 5 : 0;
     document.getElementById("invitation_cost").innerHTML = invitation_cost;
 
@@ -52,7 +56,8 @@ function calcpayments() {
     total_cost_no_paypal = total_cost_no_paypal < 0 ? 0 : total_cost_no_paypal;
 
     // Paypal charge
-    var is_paypal = form.paypal.checked;
+    var is_paypal = $('#formPaypalCheckbox').is(':checked');
+    console.log('Paypal', is_paypal);
     var paypal_charge = is_paypal ? (0.05 * total_cost_no_paypal) : 0;
     document.getElementById("paypal_charge").innerHTML = paypal_charge.toFixed(2);
 
@@ -220,23 +225,12 @@ function disableHEJDiscount() {
 
 }
 
-function toggle_all_break() {
-    for (var i = 1; i <= 6; i++) {
-        var break_check = document.getElementById("break" + i);
-        break_check.checked = true;
+// Toggles all checkboxes with ids of the form 'idname2',
+// from start_id to end_id including both
+function toggle_all_ids(idname, start_id, end_id) {
+    for (var i = start_id; i <= end_id; i++) {
+        var checkbox = document.getElementById(idname + i);
+        checkbox.checked = !checkbox.checked;
     }
 }
 
-function toggle_all_lunch() {
-    for (var i = 1; i <= 5; i++) {
-        var break_check = document.getElementById("lunch" + i);
-        break_check.checked = true;
-    }
-}
-
-function toggle_all_dinner() {
-    for (var i = 1; i <= 6; i++) {
-        var break_check = document.getElementById("dinner" + i);
-        break_check.checked = true;
-    }
-}
