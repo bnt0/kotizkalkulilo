@@ -170,24 +170,32 @@ function getAccommodationCost(num_nights, type) {
 }
 
 function getFoodCost() {
+    // TODO make this globally configurable
+    var FIRST_BREAKFAST_ID = 2;
+    var LAST_BREAKFAST_ID  = 7;
+    var FIRST_LUNCH_ID = 2;
+    var LAST_LUNCH_ID  = 6;
+    var FIRST_DINNER_ID = 1;
+    var LAST_DINNER_ID  = 6;
+
     var num_breakfast = 0;
     var num_lunch     = 0;
     var num_dinner    = 0;
 
-    for (var i = 1; i <= 6; i++) {
+    for (var i = FIRST_BREAKFAST_ID; i <= LAST_BREAKFAST_ID; i++) {
         var break_check = document.getElementById("break" + i);
         if (break_check.checked)
             num_breakfast++;
     }
     console.log("numbreak:", num_breakfast);
 
-    for (var i = 1; i <= 5; i++) {
+    for (var i = FIRST_LUNCH_ID; i <= LAST_LUNCH_ID; i++) {
         var break_check = document.getElementById("lunch" + i);
         if (break_check.checked)
             num_lunch++;
     }
 
-    for (var i = 1; i <= 6; i++) {
+    for (var i = FIRST_DINNER_ID; i <= LAST_DINNER_ID; i++) {
         var break_check = document.getElementById("dinner" + i);
         if (break_check.checked)
             num_dinner++;
