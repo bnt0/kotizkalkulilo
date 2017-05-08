@@ -249,19 +249,41 @@ function disableHEJDiscount() {
 // Toggles all checkboxes with ids of the form 'idname2',
 // from start_id to end_id including both
 function toggle_all_ids(idname, start_id, end_id) {
+    var elems = [];
     for (var i = start_id; i <= end_id; i++) {
-        var checkbox = document.getElementById(idname + i);
-        checkbox.checked = !checkbox.checked;
+        var checkbox = $('#' + idname + i);
+        elems.push(checkbox);
     }
+    toggle_list(elems);
 }
 
 // Toggles all checkboxes with breakfast/lunch/dinner for the given number,
 // (if they exist)
 function toggle_day(id) {
-    var tags = ["break", "lunch", "dinner"];
-    tags.forEach(function(tag) {
-        var checkbox = document.getElementById(tag + id);
-        if (checkbox !== null)
-            checkbox.checked = !checkbox.checked;
+    var tags  = ["break", "lunch", "dinner"];
+    var all_possible_elems = tags.map(function(tag) {
+        return $('#' + tag + id);
     });
+    var existing_elems = all_possible_elems.filter(function(elem) {
+        return elem.length;
+    });
+    toggle_list(existing_elems);
+}
+
+// If all ticked -> untick all
+// If some checkboxes unticked -> tick all
+function toggle_list(existing_elems) {
+    var is_all_checked = existing_elems.every(function(elem) {
+        return elem.is(':checked');
+    });
+
+    if (is_all_checked) {
+        existing_elems.forEach(function(elem) {
+            elem.prop('checked', false);
+        });
+    } else {
+        existing_elems.forEach(function(elem) {
+            elem.prop('checked', true);
+        });
+    }
 }
