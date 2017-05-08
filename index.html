@@ -35,42 +35,264 @@
         <div class="row">
         <div class="col-xs-8">
         <div class="form-group">
-            <label for="formAgeInput">Aĝo (en jaroj)</label>
-            <input type="number" class="form-control" id="formAgeInput" name="age" min="0" max="200" 
-                   placeholder="ekz. 21">
+            <label class="bmd-label-floating" for="formAgeInput">Kiom vi aĝas?</label>
+            <input type="number" class="form-control" id="formAgeInput" name="age" min="0" max="200">
+            <span class="bmd-help">Via aĝo en jaroj (ekz. 21)</span>
         </div>
         </div>
         </div>
 
-
-        <fieldset class="form-group" id="formLandCategoryRadio">
-          <legend>Landokategorio</legend>
-          <div class="radio">
-            <label>
-              <input type="radio" name="land" id="landCategoryRadioA" value="A" checked>
-              Kategorio A
-            </label>
-          </div>
-          <div class="radio">
-            <label>
-              <input type="radio" name="land" id="landCategoryRadioB" value="B" >
-              Kategorio B
-            </label>
-          </div>
-          <div class="radio">
-            <label>
-              <input type="radio" name="land" id="landCategoryRadioC" value="C" >
-              Kategorio C
-            </label>
-          </div>
-        </fieldset>
+        <div class="form-group">
+        <label for="formCountrySelect">Lando</label>
+        <select id="formCountrySelect" class="custom-select">
+            <option value="HU">Hungario</option>
+            <option value="AF">Afganio</option>
+            <option value="AX">Alando</option>
+            <option value="AL">Albanio</option>
+            <option value="DZ">Alĝerio</option>
+            <option value="AD">Andoro</option>
+            <option value="AO">Angolo</option>
+            <option value="AI">Angvilo</option>
+            <option value="AQ">Antarktio</option>
+            <option value="AG">Antigvo-Barbudo</option>
+            <option value="AR">Argentino</option>
+            <option value="AM">Armenio</option>
+            <option value="AW">Arubo</option>
+            <option value="AU">Aŭstralio</option>
+            <option value="AT">Aŭstrio</option>
+            <option value="AZ">Azerbajĝano</option>
+            <option value="BS">Bahamoj</option>
+            <option value="BD">Bangladeŝo</option>
+            <option value="IN">Barato</option>
+            <option value="BB">Barbado</option>
+            <option value="BH">Barejno</option>
+            <option value="BE">Belgio</option>
+            <option value="BZ">Belizo</option>
+            <option value="BY">Belorusio</option>
+            <option value="BJ">Benino</option>
+            <option value="BM">Bermudo</option>
+            <option value="MM">Birmo</option>
+            <option value="BW">Bocvano</option>
+            <option value="BO">Bolivio</option>
+            <option value="BA">Bosnio kaj Hercegovino</option>
+            <option value="BR">Brazilo</option>
+            <option value="IO">Brita Hindoceana Teritorio</option>
+            <option value="VG">Britaj Virgulininsuloj</option>
+            <option value="GB">Britio</option>
+            <option value="BN">Brunejo</option>
+            <option value="BG">Bulgario</option>
+            <option value="BF">Burkino</option>
+            <option value="BI">Burundo</option>
+            <option value="BT">Butano</option>
+            <option value="TD">Ĉado</option>
+            <option value="CZ">Ĉeĥio</option>
+            <option value="CF">Centr-Afrika Respubliko</option>
+            <option value="CL">Ĉilio</option>
+            <option value="CN">Ĉinio</option>
+            <option value="DK">Danio</option>
+            <option value="CD">Demokratia Respubliko Kongo</option>
+            <option value="DO">Domingo</option>
+            <option value="DM">Dominiko</option>
+            <option value="CI">Ebura Bordo</option>
+            <option value="EG">Egiptio</option>
+            <option value="EC">Ekvadoro</option>
+            <option value="GQ">Ekvatora Gvineo</option>
+            <option value="ER">Eritreo</option>
+            <option value="EE">Estonio</option>
+            <option value="ET">Etiopio</option>
+            <option value="FM">Federacio de Mikronezio</option>
+            <option value="FO">Ferooj</option>
+            <option value="FJ">Fiĝioj</option>
+            <option value="PH">Filipinoj</option>
+            <option value="FI">Finnlando</option>
+            <option value="GF">Franca Gviano</option>
+            <option value="PF">Franca Polinezio</option>
+            <option value="FR">Francio</option>
+            <option value="GA">Gabono</option>
+            <option value="GM">Gambio</option>
+            <option value="GH">Ganao</option>
+            <option value="DE">Germanio</option>
+            <option value="GI">Ĝibraltaro</option>
+            <option value="DJ">Ĝibutio</option>
+            <option value="GR">Grekio</option>
+            <option value="GD">Grenado</option>
+            <option value="GL">Gronlando</option>
+            <option value="GY">Gujano</option>
+            <option value="GP">Gvadelupo</option>
+            <option value="GU">Gvamo</option>
+            <option value="GT">Gvatemalo</option>
+            <option value="GW">Gvineo Bisaŭa</option>
+            <option value="GN">Gvineo</option>
+            <option value="HT">Haitio</option>
+            <option value="ES">Hispanio</option>
+            <option value="HN">Honduro</option>
+            <option value="HK">Honkongo</option>
+            <option value="ID">Indonezio</option>
+            <option value="FK">Insuloj Falklandoj</option>
+            <option value="IQ">Irako</option>
+            <option value="IR">Irano</option>
+            <option value="IE">Irlando</option>
+            <option value="IS">Islando</option>
+            <option value="IL">Israelo</option>
+            <option value="IT">Italio</option>
+            <option value="JM">Jamajko</option>
+            <option value="JP">Japanio</option>
+            <option value="YE">Jemeno</option>
+            <option value="JO">Jordanio</option>
+            <option value="CV">Kabo-Verdo</option>
+            <option value="KY">Kajmaninsuloj</option>
+            <option value="KH">Kamboĝo</option>
+            <option value="CM">Kameruno</option>
+            <option value="CA">Kanado</option>
+            <option value="GE">Kartvelio</option>
+            <option value="QA">Kataro</option>
+            <option value="KZ">Kazaĥio</option>
+            <option value="KE">Kenjo</option>
+            <option value="CY">Kipro</option>
+            <option value="KG">Kirgizio</option>
+            <option value="KI">Kiribato</option>
+            <option value="CC">Kokosinsuloj</option>
+            <option value="CO">Kolombio</option>
+            <option value="KM">Komoroj</option>
+            <option value="CR">Kostariko</option>
+            <option value="CX">Kristnaskinsulo</option>
+            <option value="HR">Kroatio</option>
+            <option value="CU">Kubo</option>
+            <option value="CK">Kukinsuloj</option>
+            <option value="KW">Kuvajto</option>
+            <option value="LA">Laoso</option>
+            <option value="LV">Latvio</option>
+            <option value="LS">Lesoto</option>
+            <option value="LB">Libano</option>
+            <option value="LR">Liberio</option>
+            <option value="LY">Libio</option>
+            <option value="LI">Liĥtenŝtejno</option>
+            <option value="LT">Litovio</option>
+            <option value="LU">Luksemburgo</option>
+            <option value="MG">Madagaskaro</option>
+            <option value="YT">Majoto</option>
+            <option value="MO">Makao</option>
+            <option value="MK">Makedonio</option>
+            <option value="MY">Malajzio</option>
+            <option value="MW">Malavio</option>
+            <option value="MV">Maldivoj</option>
+            <option value="ML">Malio</option>
+            <option value="MT">Malto</option>
+            <option value="MA">Maroko</option>
+            <option value="MH">Marŝala Insularo</option>
+            <option value="MQ">Martiniko</option>
+            <option value="MU">Maŭricio</option>
+            <option value="MR">Maŭritanio</option>
+            <option value="MX">Meksiko</option>
+            <option value="MD">Moldavio</option>
+            <option value="MC">Monako</option>
+            <option value="MS">Moncerato</option>
+            <option value="MN">Mongolio</option>
+            <option value="ME">Montenegro</option>
+            <option value="MZ">Mozambiko</option>
+            <option value="NA">Namibio</option>
+            <option value="NR">Nauro</option>
+            <option value="AN">Nederlandaj Antiloj</option>
+            <option value="NL">Nederlando</option>
+            <option value="NP">Nepalo</option>
+            <option value="NG">Niĝerio</option>
+            <option value="NE">Niĝero</option>
+            <option value="NI">Nikaragvo</option>
+            <option value="NU">Niuo</option>
+            <option value="KP">Nord-Koreio</option>
+            <option value="MP">Nord-Marianoj</option>
+            <option value="NF">Norfolkinsulo</option>
+            <option value="NO">Norvegio</option>
+            <option value="NC">Nov-Kaledonio</option>
+            <option value="NZ">Nov-Zelando</option>
+            <option value="EH">Okcidenta Saharo</option>
+            <option value="OM">Omano</option>
+            <option value="TL">Orienta Timoro</option>
+            <option value="PK">Pakistano</option>
+            <option value="PW">Palaŭo</option>
+            <option value="PS">Palestino</option>
+            <option value="PA">Panamo</option>
+            <option value="PG">Papuo-Nov-Gvineo</option>
+            <option value="PY">Paragvajo</option>
+            <option value="PE">Peruo</option>
+            <option value="PN">Pitkarna Insularo</option>
+            <option value="PL">Pollando</option>
+            <option value="PR">Porto-Riko</option>
+            <option value="PT">Portugalio</option>
+            <option value="CG">Respubliko Kongo</option>
+            <option value="RE">Reunio</option>
+            <option value="RW">Ruando</option>
+            <option value="RO">Rumanio</option>
+            <option value="RU">Rusio</option>
+            <option value="SB">Salomonoj</option>
+            <option value="SV">Salvadoro</option>
+            <option value="WS">Samoo</option>
+            <option value="SH">Sankta Heleno</option>
+            <option value="KN">Sankta-Kito kaj Neviso</option>
+            <option value="LC">Sankta Lucio</option>
+            <option value="PM">Sankta-Piero kaj Mikelono</option>
+            <option value="VC">Sankta Vincento kaj la Grenadinoj</option>
+            <option value="SM">San-Marino</option>
+            <option value="ST">Sao-Tomeo kaj Principeo</option>
+            <option value="SA">Sauda Arabio</option>
+            <option value="SC">Sejŝeloj</option>
+            <option value="SN">Senegalo</option>
+            <option value="RS">Serbio</option>
+            <option value="SL">Siera-Leono</option>
+            <option value="SG">Singapuro</option>
+            <option value="SY">Sirio</option>
+            <option value="SK">Slovakio</option>
+            <option value="SI">Slovenio</option>
+            <option value="SO">Somalio</option>
+            <option value="LK">Sri-Lanko</option>
+            <option value="ZA">Sudafriko</option>
+            <option value="SD">Sudano</option>
+            <option value="GS">Sud-Georgio kaj Sud-Sandviĉinsuloj</option>
+            <option value="KR">Sud-Koreio</option>
+            <option value="SR">Surinamo</option>
+            <option value="SZ">Svazilando</option>
+            <option value="SE">Svedio</option>
+            <option value="CH">Svislando</option>
+            <option value="TJ">Taĝikio</option>
+            <option value="TH">Tajlando</option>
+            <option value="TW">Tajvano</option>
+            <option value="TZ">Tanzanio</option>
+            <option value="TG">Togo</option>
+            <option value="TK">Tokelao</option>
+            <option value="TO">Tongo</option>
+            <option value="TT">Trinidado kaj Tobago</option>
+            <option value="TN">Tunizio</option>
+            <option value="TR">Turkio</option>
+            <option value="TM">Turkmenio</option>
+            <option value="TC">Turkoj kaj Kajkoj</option>
+            <option value="TV">Tuvalo</option>
+            <option value="UG">Ugando</option>
+            <option value="UA">Ukrainio</option>
+            <option value="AE">Unuiĝintaj Arabaj Emirlandoj</option>
+            <option value="UY">Urugvajo</option>
+            <option value="UM">Usonaj Malgrandaj Insuloj</option>
+            <option value="VI">Usonaj Virgulininsuloj</option>
+            <option value="AS">Usona Samoo</option>
+            <option value="US">Usono</option>
+            <option value="UZ">Uzbekio</option>
+            <option value="WF">Valiso kaj Futuno</option>
+            <option value="VU">Vanuatuo</option>
+            <option value="VA">Vatikanurbo</option>
+            <option value="VE">Venezuelo</option>
+            <option value="VN">Vjetnamio</option>
+            <option value="ZM">Zambio</option>
+            <option value="ZW">Zimbabvo</option>
+        </select>
+        </div>
+        
+        <p class="text-info" id="country_category_note"></p>
 
         <div class="row">
         <div class="col-xs-8">
         <div class="form-group">
-            <label for="formDaysOfProgramInput">Kiom da tagoj vi partoprenos?</label>
-            <input type="number" class="form-control" id="formDaysOfProgramInput" min="1" max="7" name="number_of_days_program"
-                   placeholder="inter 1 kaj 7" />
+            <label class="bmd-label-floating" for="formDaysOfProgramInput">Kiom da tagoj vi partoprenos?</label>
+            <input type="number" class="form-control" id="formDaysOfProgramInput" min="1" max="7" name="number_of_days_program" />
+            <span class="bmd-help">inter 1 kaj 7</span>
         </div>
         </div>
         </div>
@@ -78,9 +300,9 @@
         <div class="row">
         <div class="col-xs-8">
         <div class="form-group">
-            <label for="formNightsOfAccomInput">Kiom da noktoj vi loĝos en la IJS-ejo?</label>
-            <input type="number" class="form-control" id="formNightsOfAccomInput" min="0" max="6" name="number_of_days_accomodation"
-                   placeholder="inter 0 kaj 6" />
+            <label class="bmd-label-floating" for="formNightsOfAccomInput">Kiom da noktoj vi loĝos en la IJS-ejo?</label>
+            <input type="number" class="form-control" id="formNightsOfAccomInput" min="0" max="6" name="number_of_days_accomodation" />
+            <span class="bmd-help">inter 0 kaj 6</span>
         </div>
         </div>
         </div>
@@ -228,7 +450,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="modalLabel">Via kotizo</h4>
+                <h4 class="modal-title" id="modalLabel">Kotizo</h4>
               </div>
               <div class="modal-body">
                 <div class="alert alert-info alert-dismissible fade in" role="alert">
@@ -237,21 +459,28 @@
                   </button>
                   <strong>Memoru!</strong> Por partopreni la aranĝon, vi ankorŭ devas aliĝi!
                 </div>
-                <br />
-                <b>Programkotizo:</b>
-                <div id="program_cost"></div>
-                <b>Loĝado:</b>
-                <div id="accom_cost"></div>
-                <b>Manĝoj:</b>
-                <div id="food_cost"></div>
-                <b>HEJ rabato:</b>
-                <div id="hej_discount"></div>
-                <b>Neoficiala invitletero:</b>
-                <div id="invitation_cost"></div>
-                <b>Aldona kosto pro Paypal / kreditkarto:</b>
-                <div id="paypal_charge"></div>
-                <b>Via tuta kotizo estas:</b>
-                <div id="total_cost"></div>
+
+                <dl class="row">
+                  <dt class="col-sm-5">Programkotizo:</dt>
+                  <dd class="col-sm-6" id="program_cost"></dd>
+
+                  <dt class="col-sm-5">Loĝado:</dt>
+                  <dd class="col-sm-6" id="accom_cost"></dd>
+
+                  <dt class="col-sm-5">Manĝoj:</dt>
+                  <dd class="col-sm-6" id="food_cost"></dd>
+
+                  <dt class="col-sm-5">HEJ rabato:</dt>
+                  <dd class="col-sm-6" id="hej_discount"></dd>
+
+                  <dt class="col-sm-5">Neoficiala invitletero:</dt>
+                  <dd class="col-sm-6" id="invitation_cost"></dd>
+
+                  <dt class="col-sm-5">Paypal / kreditkarto:</dt>
+                  <dd class="col-sm-6" id="paypal_charge"></dd>
+                </dl>
+                <h3><small class="text-muted">Via tuta kotizo estas </small><span id="total_cost"></span></h3>
+
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermi</button>

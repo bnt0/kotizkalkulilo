@@ -1,6 +1,21 @@
 // Setup after jQuery is initialized
 $(document).ready(function() {
     // Set up event listeners
+
+    setUpCountryCatNote = function() {
+      var country_iso = $('#formCountrySelect').val();
+      var country_category = getCountryCategoryFromCountryCode(country_iso);
+      console.log("Country ISO2: " + country_iso + ", Category: ", country_category);
+      var country_name = $('#formCountrySelect option:selected').text();
+      document.getElementById("country_category_note").innerHTML = country_name + ' estas en kategorio ' + country_category;
+    };
+
+    setUpCountryCatNote();
+    
+    // When country is selected, show category note
+    $('#formCountrySelect').on('change', function(){
+        setUpCountryCatNote();
+    });
     
     // Calculate price after button is clicked, but before modal is shown
     $('#calculatedPriceModal').on('show.bs.modal', function() {
@@ -15,8 +30,11 @@ function populate_cost_fields() {
     var age_category = getAgeCategory(age_num);
     console.log("Age: " + age_num + ', category: ' + age_category);
 
-    var land_category = $('#formLandCategoryRadio input:checked').val();
-    console.log("Land Category:", land_category);
+    var country_iso = $('#formCountrySelect').val();
+    var country_category = getCountryCategoryFromCountryCode(country_iso);
+    console.log("Country ISO2: " + country_iso + ", Category: ", country_category);
+    var country_name = $('#formCountrySelect option:selected').text();
+    document.getElementById("country_category_note").innerHTML = country_name + ' estas en kategorio ' + country_category;
 
     var days_program = $('#formDaysOfProgramInput').val();
     console.log("Program days:", days_program);
@@ -32,7 +50,7 @@ function populate_cost_fields() {
     var prepay_category = $('#formPrepayUntilInput input:checked').val();
     console.log("Prepay by category", prepay_category);
 
-    var program_cost = getProgramCost(land_category, age_category, days_program, prepay_category);
+    var program_cost = getProgramCost(country_category, age_category, days_program, prepay_category);
 
     // Set program cost in page
     document.getElementById("program_cost").innerHTML = program_cost;
@@ -93,6 +111,26 @@ function getAgeCategory(age_num) {
     }
 
     return ageCat;
+}
+
+// returns 'A', 'B' or 'C' for the apt category
+function getCountryCategoryFromCountryCode(country) {
+    // A: Aŭstrio, Belgio, Britio, Danio, Finnlando, Francio, Germanio, Hispanio, Irlando, Islando, Italio, Luksemburgo, Nederlando, Norvegio, Svedio, Svislando
+    var a_countries = ['AT', 'BE', 'GB', 'DK', 'FI', 'FR', 'DE', 'ES', 'IE', 'IS', 'IT', 'LU', 'NL', 'NO', 'SE', 'CH'];
+    // B: european countries ekc. kat. A
+    var b_countries = [ 'AL', 'AD', 'AM', 'AT', 'BY', 'BE', 'BA', 'BG', 'CH', 'CY', 'CZ', 'DE',
+                        'DK', 'EE', 'ES', 'FO', 'FI', 'FR', 'GB', 'GE', 'GI', 'GR', 'HU', 'HR',
+                        'IE', 'IS', 'IT', 'LT', 'LU', 'LV', 'MC', 'MK', 'MT', 'NO', 'NL', 'PL',
+                        'PT', 'RO', 'RU', 'SE', 'SI', 'SK', 'SM', 'TR', 'UA', 'VA' ];
+
+    // B: cxio alia
+    if (a_countries.indexOf(country) !== -1) {
+        return 'A';
+    } else if (b_countries.indexOf(country) !== -1) {
+        return 'B';
+    } else {
+        return 'C';
+    }
 }
 
 // returns total program cost in euros
