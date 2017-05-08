@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset="utf-8">
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+        <script src="kalkulilo.js" type="text/javascript"></script>
+
+        <!-- Material Design fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        
+        <!-- Bootstrap Material Design -->
+        <link rel="stylesheet" href="https://cdn.rawgit.com/FezVrasta/bootstrap-material-design/dist/dist/bootstrap-material-design.min.css">
+
+        <!-- Own stylesheets -->
+        <link rel="stylesheet" href="style.css">
+        <title>Kotizkalkulilo por IJS 2017</title>
+    </head>
+
+    <body>
+        <div class="container">
+
+        <div class="row">
+        <div class="col-sm-12">
+        <h1>Kotizkalkulilo por IJS 2017</h1>
+        </div>
+        </div>
+
+        <div class="row">
+        <div class="col-sm-12">
+
+        <form id="pricecalc">
+            
+        <div class="row">
+        <div class="col-xs-8">
+        <div class="form-group">
+            <label for="formAgeInput">Aĝo (en jaroj)</label>
+            <input type="number" class="form-control" id="formAgeInput" name="age" min="0" max="200" 
+                   placeholder="ekz. 21">
+        </div>
+        </div>
+        </div>
+
+
+        <fieldset class="form-group" id="formLandCategoryRadio">
+          <legend>Landokategorio</legend>
+          <div class="radio">
+            <label>
+              <input type="radio" name="land" id="landCategoryRadioA" value="A" checked>
+              Kategorio A
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="land" id="landCategoryRadioB" value="B" >
+              Kategorio B
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="land" id="landCategoryRadioC" value="C" >
+              Kategorio C
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="row">
+        <div class="col-xs-8">
+        <div class="form-group">
+            <label for="formDaysOfProgramInput">Kiom da tagoj vi partoprenos?</label>
+            <input type="number" class="form-control" id="formDaysOfProgramInput" min="1" max="7" name="number_of_days_program"
+                   placeholder="inter 1 kaj 7" />
+        </div>
+        </div>
+        </div>
+
+        <div class="row">
+        <div class="col-xs-8">
+        <div class="form-group">
+            <label for="formNightsOfAccomInput">Kiom da noktoj vi loĝos en la IJS-ejo?</label>
+            <input type="number" class="form-control" id="formNightsOfAccomInput" min="0" max="6" name="number_of_days_accomodation"
+                   placeholder="inter 0 kaj 6" />
+        </div>
+        </div>
+        </div>
+
+        <fieldset class="form-group" id="formAccommodationTypeInput">
+          <legend>Mi loĝos en:</legend>
+          <div class="radio">
+            <label>
+              <input type="radio" name="accom" id="accommodation_2_beds_radio" value="2_beds" checked>
+              Dulita ĉambro
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="accom" id="accommodation_3_4_beds_radio" value="3_4_beds" >
+              3-4 lita ĉambro
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="accom" id="accommodation_6_10_beds_radio" value="6_10_beds" >
+              6-10 lita ĉambro
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="accom" id="accommodation_tent_radio" value="tent" >
+              Propra tendo
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-group" id="formPrepayUntilInput">
+          <legend>Mi antaŭpagos(is) ĝis:</legend>
+          <div class="radio">
+            <label>
+              <input type="radio" name="prepay" id="prepay30majo" value="0" checked>
+              30a de majo 2017
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="prepay" id="prepay30junio" value="1" >
+              30a de junio 2017
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="prepay" id="prepay_no" value="2" >
+              Sen antaŭpago
+            </label>
+          </div>
+        </fieldset>
+
+        <legend>Selektu viajn manĝojn:</legend>
+        <table class="table noselect" id="foodtable">
+          <thead>
+            <tr>
+            <th></th>
+            <th class="clickme" href="javascript:void(0)" onclick="toggle_all_ids('break', 2, 7)"> Matenmanĝo</th>
+            <th class="clickme" href="javascript:void(0)" onclick="toggle_all_ids('lunch', 2, 6)">Tagmanĝo</th>
+            <th class="clickme" href="javascript:void(0)" onclick="toggle_all_ids('dinner', 1, 6)">Vespermanĝo</th>
+          </thead>
+          <tbody>
+            <tr>
+            <th class="clickme" href="javascript:void(0)" scope="row" onclick="toggle_day(1)">7a de aŭgusto</th>
+            <td></td>
+            <td></td>
+            <td><div class="checkbox"><label><input type="checkbox" id="dinner1" value="dinner1"></label></div></td>
+            </tr>
+            <tr>
+            <th class="clickme" href="javascript:void(0)" scope="row" onclick="toggle_day(2)">8a de aŭgusto</th>
+            <td><div class="checkbox"><label><input type="checkbox" id="break2"  value="break2" ></label></div></td>
+            <td><div class="checkbox"><label><input type="checkbox" id="lunch2"  value="lunch2" ></label></div></td>
+            <td><div class="checkbox"><label><input type="checkbox" id="dinner2" value="dinner2"></label></div></td>
+            </tr>
+            <tr>
+            <th class="clickme" href="javascript:void(0)" scope="row" onclick="toggle_day(3)">9a de aŭgusto</th>
+            <td><div class="checkbox"><label><input type="checkbox" id="break3"  value="break3" ></label></div></td>
+            <td><div class="checkbox"><label><input type="checkbox" id="lunch3"  value="lunch3" ></label></div></td>
+            <td><div class="checkbox"><label><input type="checkbox" id="dinner3" value="dinner3"></label></div></td>
+            </tr>
+            <tr>
+            <th class="clickme" href="javascript:void(0)" scope="row" onclick="toggle_day(4)">10a de aŭgusto</th>
+            <td><div class="checkbox"><label><input type="checkbox" id="break4"  value="break4" ></label></div></td>
+            <td><div class="checkbox"><label><input type="checkbox" id="lunch4"  value="lunch4" ></label></div></td>
+            <td><div class="checkbox"><label><input type="checkbox" id="dinner4" value="dinner4"></label></div></td>
+            </tr>
+            <tr>
+            <th class="clickme" href="javascript:void(0)" scope="row" onclick="toggle_day(5)">11a de aŭgusto</th>
+            <td><div class="checkbox"><label><input type="checkbox" id="break5"  value="break5" ></label></div></td>
+            <td><div class="checkbox"><label><input type="checkbox" id="lunch5"  value="lunch5" ></label></div></td>
+            <td><div class="checkbox"><label><input type="checkbox" id="dinner5" value="dinner5"></label></div></td>
+            </tr>
+            <tr>
+            <th class="clickme" href="javascript:void(0)" scope="row" onclick="toggle_day(6)">12a de aŭgusto</th>
+            <td><div class="checkbox"><label><input type="checkbox" id="break6"  value="break6" ></label></div></td>
+            <td><div class="checkbox"><label><input type="checkbox" id="lunch6"  value="lunch6" ></label></div></td>
+            <td><div class="checkbox"><label><input type="checkbox" id="dinner6" value="dinner6"></label></div></td>
+            </tr>
+            <tr>
+            <th class="clickme" href="javascript:void(0)" scope="row" onclick="toggle_day(7)">13a de aŭgusto</th>
+            <td><div class="checkbox"><label><input type="checkbox" id="break7"  value="break7" ></label></div></td>
+            <td></td>
+            <td></td>
+            </tr>    
+            </tbody>
+        </table>     
+                     
+        <legend>Aldonaj detaloj:</legend>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="formHEJMemberCheckbox" name="hej_member" value="hej_member">
+            Mi estas ordinara membro de HEJ (nur sub 30).
+          </label>
+        </div>   
+                 
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="formInvitationCheckbox" name="invitation" value="invitation">
+            Mi deziras neoficialan invitleteron.
+          </label>
+        </div>   
+                 
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="formPaypalCheckbox" name="paypal" value="paypal">
+            Mi pagas per Paypal aŭ kreditkarto.
+          </label>
+        </div>   
+
+        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#calculatedPriceModal">Montru mian kotizon!</button>
+
+        </form>  
+                 
+        </div>   
+        </div>   
+        </div>
+
+        <!-- Modal for calculated price -->
+        <div class="modal fade" id="calculatedPriceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="modalLabel">Via kotizo</h4>
+              </div>
+              <div class="modal-body">
+                <br />
+                <b>Programkotizo:</b>
+                <div id="program_cost"></div>
+                <b>Loĝado:</b>
+                <div id="accom_cost"></div>
+                <b>Manĝoj:</b>
+                <div id="food_cost"></div>
+                <b>HEJ rabato:</b>
+                <div id="hej_discount"></div>
+                <b>Neoficiala invitletero:</b>
+                <div id="invitation_cost"></div>
+                <b>Aldona kosto pro Paypal / kreditkarto:</b>
+                <div id="paypal_charge"></div>
+                <b>Via tuta kotizo estas:</b>
+                <div id="total_cost"></div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermi</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+        <script src="https://cdn.rawgit.com/HubSpot/tether/v1.3.4/dist/js/tether.min.js"></script>
+        <script src="https://cdn.rawgit.com/FezVrasta/bootstrap-material-design/dist/dist/bootstrap-material-design.iife.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>
+        <script>
+          $('body').bootstrapMaterialDesign();
+        </script>
+    </body>
+</html>

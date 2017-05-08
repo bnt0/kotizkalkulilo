@@ -7,7 +7,7 @@ $(document).ready(function() {
         populate_cost_fields();
     });
 
-})
+});
 
 function populate_cost_fields() {
     // Calculate program cost
@@ -97,7 +97,6 @@ function getAgeCategory(age_num) {
 
 // returns total program cost in euros
 function getProgramCost(land_cat, age_cat, num_days, prepay_cat) {
-
     console.log(prepay_cat, age_cat);
 
     // define price tables for each land category
@@ -157,7 +156,7 @@ function getAccommodationCost(num_nights, type) {
     price_table["2_beds"] = 15;
     price_table["3_4_beds"] = 12;
     price_table["6_10_beds"] = 10;
-    price_table["tent"] = 7;
+    price_table.tent = 7;
 
     var MAX_NIGHTS = 6;
 
@@ -182,22 +181,25 @@ function getFoodCost() {
     var num_lunch     = 0;
     var num_dinner    = 0;
 
-    for (var i = FIRST_BREAKFAST_ID; i <= LAST_BREAKFAST_ID; i++) {
-        var break_check = document.getElementById("break" + i);
-        if (break_check.checked)
+    var i;
+    var elem;
+
+    for (i = FIRST_BREAKFAST_ID; i <= LAST_BREAKFAST_ID; i++) {
+        elem = document.getElementById("break" + i);
+        if (elem.checked)
             num_breakfast++;
     }
     console.log("numbreak:", num_breakfast);
 
-    for (var i = FIRST_LUNCH_ID; i <= LAST_LUNCH_ID; i++) {
-        var break_check = document.getElementById("lunch" + i);
-        if (break_check.checked)
+    for (i = FIRST_LUNCH_ID; i <= LAST_LUNCH_ID; i++) {
+        elem = document.getElementById("lunch" + i);
+        if (elem.checked)
             num_lunch++;
     }
 
-    for (var i = FIRST_DINNER_ID; i <= LAST_DINNER_ID; i++) {
-        var break_check = document.getElementById("dinner" + i);
-        if (break_check.checked)
+    for (i = FIRST_DINNER_ID; i <= LAST_DINNER_ID; i++) {
+        elem = document.getElementById("dinner" + i);
+        if (elem.checked)
             num_dinner++;
     }
 

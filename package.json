@@ -4,9 +4,8 @@
   "description": "Price calculator for IJS 2017 (ijs.hu)",
   "main": "kalkulilo.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "node server.js"
-
   },
   "repository": {
     "type": "git",
@@ -20,5 +19,9 @@
   "homepage": "https://github.com/bnt0/kotizkalkulilo#readme",
   "dependencies": {
     "express": "^4.15.2"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.4",
+    "mocha": "^3.3.0"
   }
 }
