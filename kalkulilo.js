@@ -11,21 +11,30 @@ $(document).ready(function() {
     };
 
     setUpCountryCatNote();
-    
+
     // When country is selected, show category note
     $('#formCountrySelect').on('change', function(){
         setUpCountryCatNote();
     });
-    
+
     // Calculate price after button is clicked, but before modal is shown
-    $('#calculatedPriceModal').on('show.bs.modal', function() {
+    $('#calculatedPriceModalToggle').click(function() {
         populate_cost_fields();
+        var dialog = document.querySelector('dialog');
+        if (! dialog.showModal) {
+            dialogPolyfill.registerDialog(dialog);
+        }
+        dialog.showModal();
+        dialog.querySelector('.close').addEventListener('click', function(e) {
+        dialog.close();
+        });
     });
 
 });
 
 function populate_cost_fields() {
     // Calculate program cost
+    console.info('populate');
     var age_num = $('#formAgeInput').val();
     var age_category = getAgeCategory(age_num);
     console.log("Age: " + age_num + ', category: ' + age_category);
@@ -65,7 +74,7 @@ function populate_cost_fields() {
     // Food cost
     var food_cost = getFoodCost();
     document.getElementById("food_cost").innerHTML = food_cost;
-    
+
     // HEJ discount
     // TODO warn if age is > 30
     var is_hej_member = $('#formHEJMemberCheckbox').is(':checked');
@@ -100,14 +109,14 @@ function populate_cost_fields() {
 // 1: 19-29
 // 2: 30+ (or invalid age)
 function getAgeCategory(age_num) {
-    var ageCat; 
+    var ageCat;
 
     if (age_num >= 0 && age_num <= 18) {
         ageCat = 0;
     } else if (age_num >= 0 && age_num <= 29) {
         ageCat = 1;
     } else {
-        ageCat = 2; 
+        ageCat = 2;
     }
 
     return ageCat;
@@ -115,7 +124,7 @@ function getAgeCategory(age_num) {
 
 // returns 'A', 'B' or 'C' for the apt category
 function getCountryCategoryFromCountryCode(country) {
-    // A: Aŭstrio, Belgio, Britio, Danio, Finnlando, Francio, Germanio, Hispanio, Irlando, Islando, Italio, Luksemburgo, Nederlando, Norvegio, Svedio, Svislando
+    // A: AÅ­strio, Belgio, Britio, Danio, Finnlando, Francio, Germanio, Hispanio, Irlando, Islando, Italio, Luksemburgo, Nederlando, Norvegio, Svedio, Svislando
     var a_countries = ['AT', 'BE', 'GB', 'DK', 'FI', 'FR', 'DE', 'ES', 'IE', 'IS', 'IT', 'LU', 'NL', 'NO', 'SE', 'CH'];
     // B: european countries ekc. kat. A
     var b_countries = [ 'AL', 'AD', 'AM', 'AT', 'BY', 'BE', 'BA', 'BG', 'CH', 'CY', 'CZ', 'DE',
@@ -174,11 +183,11 @@ function getProgramCost(land_cat, age_cat, num_days, prepay_cat) {
     console.log("pricetable price:", total_price);
 
     var return_price = 0;
-    
+
     // if participating for at least 5 nights -> full price for 7 days
     // otherwise daily price is total_price / 5
     if (num_days >= 5) {
-        return_price = total_price; 
+        return_price = total_price;
     } else {
         var daily_price = total_price / 5;
         return_price = num_days * daily_price;
@@ -255,7 +264,7 @@ function getFoodCost() {
 // returns absolute value of discount (non-negative!)
 function getHEJDiscount(is_hej_member, num_days) {
     if (!is_hej_member) {
-        return 0; 
+        return 0;
     }
 
     var DAILY_DISCOUNT = 4;
@@ -276,7 +285,7 @@ function disableHEJDiscount() {
 
     // Disable HEJ discount if 30+
     if (age_category >= 2) {
-        form.hej_member.checked = false; 
+        form.hej_member.checked = false;
         form.hej_member.disabled = true;
     } else {
         form.hej_member.disabled = false;
@@ -318,10 +327,12 @@ function toggle_list(existing_elems) {
     if (is_all_checked) {
         existing_elems.forEach(function(elem) {
             elem.prop('checked', false);
+            elem.parent()[0].MaterialCheckbox.uncheck();
         });
     } else {
         existing_elems.forEach(function(elem) {
             elem.prop('checked', true);
+            elem.parent()[0].MaterialCheckbox.check();
         });
     }
 }
