@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="{{ alt }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="language" content="{{ alt }}">
+  <link rel="stylesheet" href="{{ '/static/material.min.css'|url }}">
+  <link rel="stylesheet" href="{{ '/static/mdl-selectfield.min.css'|url }}">
+  <link rel="stylesheet" type="text/css" href="{{ '/static/dialog-polyfill.css'|url }}" />
+  <link rel="stylesheet" href="{{ '/static/style.css'|url }}">
+  <link rel="icon" type="image/png" href="{{ '/static/img/ijs2017_favicon.png' }}"  sizes="128x128">
+  <title>IJS 2017{% block title %}{% endblock %}</title>
+  <meta description="IJS? Certe la plej mojosa esperanta renkontiĝo de la somero, ĉe la lago Balatono en Hungario">
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <script src="{{ '/static/material.min.js'|url }}"></script>
+  <script src="{{ '/static/mdl-selectfield.min.js'|url }}" type="text/javascript"></script>
+  <script src="{{ '/static/lightbox.js'|url }}"></script>
+  <script src="{{ '/static/tabletop.min.js'|url }}"></script>
+  <script src="{{ '/static/skriptoj.js'|url }}"></script>
+
+
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <script src="https://cdn.rawgit.com/HubSpot/tether/v1.3.4/dist/js/tether.min.js"></script>
+  <script src="https://cdn.rawgit.com/FezVrasta/bootstrap-material-design/dist/dist/bootstrap-material-design.iife.min.js"></script>
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>
+  <script>
+    $('body').bootstrapMaterialDesign();
+  </script>
+    <script src="{{ '/static/kalkulilo.js'|url }}" type="text/javascript"></script>
+    <script src="{{ '/static/dialog-polyfill.js'|url }}" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title"><a href="/">IJS <i>2017</i></a></span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+        {% for page in site.get('/').children %}
+          {% set label = site.get(page._path, alt=alt).title %}
+          <a class="mdl-navigation__link{% if this == page %} is-active{% endif %}" href="{{ page|url(alt=alt) }}">{{ label }}</a>
+        {% endfor %}
+
+        {% for lang in ['eo', 'hu'] %}
+          {% if lang != alt %}
+            <a class="mdl-navigation__link" href="{{ '.'|url(alt=lang) }}">{{ lang|upper }}</a>
+          {% endif %}
+        {% endfor %}
+      </nav>
+
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">IJS 2017</span>
+
+    <ul class="nav navbar-nav">
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link{% if this._path == '/' %} is-active{% endif %}"
+           href="{{ '/'|url }}">Ĉefpaĝo</a>
+        {% for page in site.get('/').children %}
+          {% set label = site.get(page._path, alt=alt).title %}
+          <a class="mdl-navigation__link{% if this == page %} is-active{% endif %}" href="{{ page|url(alt=alt) }}">{{ label }}</a>
+        {% endfor %}
+
+        <i class="mdl-navigation__link-divider"></i>
+
+        {% for lang, label in [['eo', 'Esperanto'], ['hu', 'Magyarul']] %}
+          {% if lang != alt %}
+            <a class="mdl-navigation__link" href="{{ '.'|url(alt=lang) }}">{{ label }}</a>
+          {% endif %}
+        {% endfor %}
+      </nav>
+    </ul>
+  </div>
+
+  <div class="mdl-layout__content" style="background-color: {{ this.fono_koloro }}">
+    <main>
+      {% block body %}{% endblock %}
+    </main>
+
+    <footer>
+      <div class="mdl-grid">
+        {% for name, link in [
+          ['facebook', 'facebook.com/hungarajunularo'],
+          ['twitter', 'twitter.com/IJSenHungario'],
+          ['telegram', 'telegram.me/joinchat/ED7aZ0C43esOgFktc1lqAw'],
+          ['instagram', 'instagram.com/hungarajunularo'],
+        ] %}
+          <div id="id-{{ name }}" class="mdl-cell mdl-cell--3-col mdl-cell--2-col-phone">
+            <a href="https://{{ link }}" target="_blank">
+              <img src="/static/img/{{ name }}.svg" alt="{{ name }}">
+            </a>
+          </div>
+          <div class="mdl-tooltip mdl-tooltip--large" data-mdl-for="id-{{ name }}">{{ name|capitalize }}</div>
+        {% endfor %}
+      </div>
+      <br><br>
+      &copy; Kopirajtoj 2017 - HEJ/MIESZ
+    </footer>
+  </div>
+
+  <script src="{{ '/static/dialog-polyfill.js'|url }}" type="text/javascript"></script>
+</div>
+
+  {% block dialog %}{% endblock %}
+
+</body>
+</html>
