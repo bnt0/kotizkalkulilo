@@ -1,501 +1,606 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta charset="utf-8">
-        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-        <script src="kalkulilo.js" type="text/javascript"></script>
+<!doctype html>
+<html lang="eo">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="language" content="eo">
+  <link rel="stylesheet" href="../static/material.min.css">
+  <link rel="stylesheet" href="../static/mdl-selectfield.min.css">
+  <link rel="stylesheet" type="text/css" href="../static/dialog-polyfill.css" />
+  <link rel="stylesheet" href="../static/style.css">
+  <link rel="icon" type="image/png" href="/static/img/ijs2017_favicon.png"  sizes="128x128">
+  <title>IJS 2017 – Internacia Junulara Semajno en Hungario</title>
+  <meta description="IJS? Certe la plej mojosa esperanta renkontiĝo de la somero, ĉe la lago Balatono en Hungario">
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-        <!-- Material Design fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script src="../static/material.min.js"></script>
+  <script src="../static/mdl-selectfield.min.js" type="text/javascript"></script>
+  <script src="../static/lightbox.js"></script>
+  <script src="../static/tabletop.min.js"></script>
+  <script src="../static/skriptoj.js"></script>
+
+
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <script src="https://cdn.rawgit.com/HubSpot/tether/v1.3.4/dist/js/tether.min.js"></script>
+  <script src="https://cdn.rawgit.com/FezVrasta/bootstrap-material-design/dist/dist/bootstrap-material-design.iife.min.js"></script>
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>
+  <script>
+    $('body').bootstrapMaterialDesign();
+  </script>
+    <script src="../static/kalkulilo.js" type="text/javascript"></script>
+    <script src="../static/dialog-polyfill.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title"><a href="/">IJS <i>2017</i></a></span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
         
-        <!-- Bootstrap Material Design -->
-        <link rel="stylesheet" href="https://cdn.rawgit.com/FezVrasta/bootstrap-material-design/dist/dist/bootstrap-material-design.min.css">
-
-        <!-- Own stylesheets -->
-        <link rel="stylesheet" href="style.css">
-        <title>Kotizkalkulilo por IJS 2017</title>
-    </head>
-
-    <body>
-        <div class="container">
-
-        <div class="row">
-        <div class="col-sm-12">
-        <h1>Kotizkalkulilo por IJS 2017</h1>
-        </div>
-        </div>
-
-        <div class="row">
-        <div class="col-sm-12">
-
-        <form id="pricecalc">
-            
-        <div class="row">
-        <div class="col-xs-8">
-        <div class="form-group">
-            <label class="bmd-label-floating" for="formAgeInput">Kiom vi aĝas?</label>
-            <input type="number" class="form-control" id="formAgeInput" name="age" min="0" max="200">
-            <span class="bmd-help">Via aĝo en jaroj (ekz. 21)</span>
-        </div>
-        </div>
-        </div>
-
-        <div class="form-group">
-        <label for="formCountrySelect">Lando</label>
-        <select id="formCountrySelect" class="custom-select">
-            <option value="HU">Hungario</option>
-            <option value="AF">Afganio</option>
-            <option value="AX">Alando</option>
-            <option value="AL">Albanio</option>
-            <option value="DZ">Alĝerio</option>
-            <option value="AD">Andoro</option>
-            <option value="AO">Angolo</option>
-            <option value="AI">Angvilo</option>
-            <option value="AQ">Antarktio</option>
-            <option value="AG">Antigvo-Barbudo</option>
-            <option value="AR">Argentino</option>
-            <option value="AM">Armenio</option>
-            <option value="AW">Arubo</option>
-            <option value="AU">Aŭstralio</option>
-            <option value="AT">Aŭstrio</option>
-            <option value="AZ">Azerbajĝano</option>
-            <option value="BS">Bahamoj</option>
-            <option value="BD">Bangladeŝo</option>
-            <option value="IN">Barato</option>
-            <option value="BB">Barbado</option>
-            <option value="BH">Barejno</option>
-            <option value="BE">Belgio</option>
-            <option value="BZ">Belizo</option>
-            <option value="BY">Belorusio</option>
-            <option value="BJ">Benino</option>
-            <option value="BM">Bermudo</option>
-            <option value="MM">Birmo</option>
-            <option value="BW">Bocvano</option>
-            <option value="BO">Bolivio</option>
-            <option value="BA">Bosnio kaj Hercegovino</option>
-            <option value="BR">Brazilo</option>
-            <option value="IO">Brita Hindoceana Teritorio</option>
-            <option value="VG">Britaj Virgulininsuloj</option>
-            <option value="GB">Britio</option>
-            <option value="BN">Brunejo</option>
-            <option value="BG">Bulgario</option>
-            <option value="BF">Burkino</option>
-            <option value="BI">Burundo</option>
-            <option value="BT">Butano</option>
-            <option value="TD">Ĉado</option>
-            <option value="CZ">Ĉeĥio</option>
-            <option value="CF">Centr-Afrika Respubliko</option>
-            <option value="CL">Ĉilio</option>
-            <option value="CN">Ĉinio</option>
-            <option value="DK">Danio</option>
-            <option value="CD">Demokratia Respubliko Kongo</option>
-            <option value="DO">Domingo</option>
-            <option value="DM">Dominiko</option>
-            <option value="CI">Ebura Bordo</option>
-            <option value="EG">Egiptio</option>
-            <option value="EC">Ekvadoro</option>
-            <option value="GQ">Ekvatora Gvineo</option>
-            <option value="ER">Eritreo</option>
-            <option value="EE">Estonio</option>
-            <option value="ET">Etiopio</option>
-            <option value="FM">Federacio de Mikronezio</option>
-            <option value="FO">Ferooj</option>
-            <option value="FJ">Fiĝioj</option>
-            <option value="PH">Filipinoj</option>
-            <option value="FI">Finnlando</option>
-            <option value="GF">Franca Gviano</option>
-            <option value="PF">Franca Polinezio</option>
-            <option value="FR">Francio</option>
-            <option value="GA">Gabono</option>
-            <option value="GM">Gambio</option>
-            <option value="GH">Ganao</option>
-            <option value="DE">Germanio</option>
-            <option value="GI">Ĝibraltaro</option>
-            <option value="DJ">Ĝibutio</option>
-            <option value="GR">Grekio</option>
-            <option value="GD">Grenado</option>
-            <option value="GL">Gronlando</option>
-            <option value="GY">Gujano</option>
-            <option value="GP">Gvadelupo</option>
-            <option value="GU">Gvamo</option>
-            <option value="GT">Gvatemalo</option>
-            <option value="GW">Gvineo Bisaŭa</option>
-            <option value="GN">Gvineo</option>
-            <option value="HT">Haitio</option>
-            <option value="ES">Hispanio</option>
-            <option value="HN">Honduro</option>
-            <option value="HK">Honkongo</option>
-            <option value="ID">Indonezio</option>
-            <option value="FK">Insuloj Falklandoj</option>
-            <option value="IQ">Irako</option>
-            <option value="IR">Irano</option>
-            <option value="IE">Irlando</option>
-            <option value="IS">Islando</option>
-            <option value="IL">Israelo</option>
-            <option value="IT">Italio</option>
-            <option value="JM">Jamajko</option>
-            <option value="JP">Japanio</option>
-            <option value="YE">Jemeno</option>
-            <option value="JO">Jordanio</option>
-            <option value="CV">Kabo-Verdo</option>
-            <option value="KY">Kajmaninsuloj</option>
-            <option value="KH">Kamboĝo</option>
-            <option value="CM">Kameruno</option>
-            <option value="CA">Kanado</option>
-            <option value="GE">Kartvelio</option>
-            <option value="QA">Kataro</option>
-            <option value="KZ">Kazaĥio</option>
-            <option value="KE">Kenjo</option>
-            <option value="CY">Kipro</option>
-            <option value="KG">Kirgizio</option>
-            <option value="KI">Kiribato</option>
-            <option value="CC">Kokosinsuloj</option>
-            <option value="CO">Kolombio</option>
-            <option value="KM">Komoroj</option>
-            <option value="CR">Kostariko</option>
-            <option value="CX">Kristnaskinsulo</option>
-            <option value="HR">Kroatio</option>
-            <option value="CU">Kubo</option>
-            <option value="CK">Kukinsuloj</option>
-            <option value="KW">Kuvajto</option>
-            <option value="LA">Laoso</option>
-            <option value="LV">Latvio</option>
-            <option value="LS">Lesoto</option>
-            <option value="LB">Libano</option>
-            <option value="LR">Liberio</option>
-            <option value="LY">Libio</option>
-            <option value="LI">Liĥtenŝtejno</option>
-            <option value="LT">Litovio</option>
-            <option value="LU">Luksemburgo</option>
-            <option value="MG">Madagaskaro</option>
-            <option value="YT">Majoto</option>
-            <option value="MO">Makao</option>
-            <option value="MK">Makedonio</option>
-            <option value="MY">Malajzio</option>
-            <option value="MW">Malavio</option>
-            <option value="MV">Maldivoj</option>
-            <option value="ML">Malio</option>
-            <option value="MT">Malto</option>
-            <option value="MA">Maroko</option>
-            <option value="MH">Marŝala Insularo</option>
-            <option value="MQ">Martiniko</option>
-            <option value="MU">Maŭricio</option>
-            <option value="MR">Maŭritanio</option>
-            <option value="MX">Meksiko</option>
-            <option value="MD">Moldavio</option>
-            <option value="MC">Monako</option>
-            <option value="MS">Moncerato</option>
-            <option value="MN">Mongolio</option>
-            <option value="ME">Montenegro</option>
-            <option value="MZ">Mozambiko</option>
-            <option value="NA">Namibio</option>
-            <option value="NR">Nauro</option>
-            <option value="AN">Nederlandaj Antiloj</option>
-            <option value="NL">Nederlando</option>
-            <option value="NP">Nepalo</option>
-            <option value="NG">Niĝerio</option>
-            <option value="NE">Niĝero</option>
-            <option value="NI">Nikaragvo</option>
-            <option value="NU">Niuo</option>
-            <option value="KP">Nord-Koreio</option>
-            <option value="MP">Nord-Marianoj</option>
-            <option value="NF">Norfolkinsulo</option>
-            <option value="NO">Norvegio</option>
-            <option value="NC">Nov-Kaledonio</option>
-            <option value="NZ">Nov-Zelando</option>
-            <option value="EH">Okcidenta Saharo</option>
-            <option value="OM">Omano</option>
-            <option value="TL">Orienta Timoro</option>
-            <option value="PK">Pakistano</option>
-            <option value="PW">Palaŭo</option>
-            <option value="PS">Palestino</option>
-            <option value="PA">Panamo</option>
-            <option value="PG">Papuo-Nov-Gvineo</option>
-            <option value="PY">Paragvajo</option>
-            <option value="PE">Peruo</option>
-            <option value="PN">Pitkarna Insularo</option>
-            <option value="PL">Pollando</option>
-            <option value="PR">Porto-Riko</option>
-            <option value="PT">Portugalio</option>
-            <option value="CG">Respubliko Kongo</option>
-            <option value="RE">Reunio</option>
-            <option value="RW">Ruando</option>
-            <option value="RO">Rumanio</option>
-            <option value="RU">Rusio</option>
-            <option value="SB">Salomonoj</option>
-            <option value="SV">Salvadoro</option>
-            <option value="WS">Samoo</option>
-            <option value="SH">Sankta Heleno</option>
-            <option value="KN">Sankta-Kito kaj Neviso</option>
-            <option value="LC">Sankta Lucio</option>
-            <option value="PM">Sankta-Piero kaj Mikelono</option>
-            <option value="VC">Sankta Vincento kaj la Grenadinoj</option>
-            <option value="SM">San-Marino</option>
-            <option value="ST">Sao-Tomeo kaj Principeo</option>
-            <option value="SA">Sauda Arabio</option>
-            <option value="SC">Sejŝeloj</option>
-            <option value="SN">Senegalo</option>
-            <option value="RS">Serbio</option>
-            <option value="SL">Siera-Leono</option>
-            <option value="SG">Singapuro</option>
-            <option value="SY">Sirio</option>
-            <option value="SK">Slovakio</option>
-            <option value="SI">Slovenio</option>
-            <option value="SO">Somalio</option>
-            <option value="LK">Sri-Lanko</option>
-            <option value="ZA">Sudafriko</option>
-            <option value="SD">Sudano</option>
-            <option value="GS">Sud-Georgio kaj Sud-Sandviĉinsuloj</option>
-            <option value="KR">Sud-Koreio</option>
-            <option value="SR">Surinamo</option>
-            <option value="SZ">Svazilando</option>
-            <option value="SE">Svedio</option>
-            <option value="CH">Svislando</option>
-            <option value="TJ">Taĝikio</option>
-            <option value="TH">Tajlando</option>
-            <option value="TW">Tajvano</option>
-            <option value="TZ">Tanzanio</option>
-            <option value="TG">Togo</option>
-            <option value="TK">Tokelao</option>
-            <option value="TO">Tongo</option>
-            <option value="TT">Trinidado kaj Tobago</option>
-            <option value="TN">Tunizio</option>
-            <option value="TR">Turkio</option>
-            <option value="TM">Turkmenio</option>
-            <option value="TC">Turkoj kaj Kajkoj</option>
-            <option value="TV">Tuvalo</option>
-            <option value="UG">Ugando</option>
-            <option value="UA">Ukrainio</option>
-            <option value="AE">Unuiĝintaj Arabaj Emirlandoj</option>
-            <option value="UY">Urugvajo</option>
-            <option value="UM">Usonaj Malgrandaj Insuloj</option>
-            <option value="VI">Usonaj Virgulininsuloj</option>
-            <option value="AS">Usona Samoo</option>
-            <option value="US">Usono</option>
-            <option value="UZ">Uzbekio</option>
-            <option value="WF">Valiso kaj Futuno</option>
-            <option value="VU">Vanuatuo</option>
-            <option value="VA">Vatikanurbo</option>
-            <option value="VE">Venezuelo</option>
-            <option value="VN">Vjetnamio</option>
-            <option value="ZM">Zambio</option>
-            <option value="ZW">Zimbabvo</option>
-        </select>
-        </div>
+          
+          <a class="mdl-navigation__link" href="../kotizo/">Kotizo</a>
         
-        <p class="text-info" id="country_category_note"></p>
+          
+          <a class="mdl-navigation__link is-active" href="../kotizkalkulilo/">Kotizkalkulilo</a>
+        
 
-        <div class="row">
-        <div class="col-xs-8">
-        <div class="form-group">
-            <label class="bmd-label-floating" for="formDaysOfProgramInput">Kiom da tagoj vi partoprenos?</label>
-            <input type="number" class="form-control" id="formDaysOfProgramInput" min="1" max="7" name="number_of_days_program" />
-            <span class="bmd-help">inter 1 kaj 7</span>
-        </div>
-        </div>
-        </div>
+        
+          
+        
+          
+            <a class="mdl-navigation__link" href="../hu/kotizkalkulilo/">HU</a>
+          
+        
+      </nav>
 
-        <div class="row">
-        <div class="col-xs-8">
-        <div class="form-group">
-            <label class="bmd-label-floating" for="formNightsOfAccomInput">Kiom da noktoj vi loĝos en la IJS-ejo?</label>
-            <input type="number" class="form-control" id="formNightsOfAccomInput" min="0" max="6" name="number_of_days_accomodation" />
-            <span class="bmd-help">inter 0 kaj 6</span>
-        </div>
-        </div>
-        </div>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">IJS 2017</span>
 
-        <fieldset class="form-group" id="formAccommodationTypeInput">
-          <legend>Mi loĝos en:</legend>
-          <div class="radio">
-            <label>
-              <input type="radio" name="accom" id="accommodation_2_beds_radio" value="2_beds" checked>
-              Dulita ĉambro
-            </label>
+    <ul class="nav navbar-nav">
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link"
+           href="../">Ĉefpaĝo</a>
+        
+          
+          <a class="mdl-navigation__link" href="../kotizo/">Kotizo</a>
+        
+          
+          <a class="mdl-navigation__link is-active" href="../kotizkalkulilo/">Kotizkalkulilo</a>
+        
+
+        <i class="mdl-navigation__link-divider"></i>
+
+        
+          
+        
+          
+            <a class="mdl-navigation__link" href="../hu/kotizkalkulilo/">Magyarul</a>
+          
+        
+      </nav>
+    </ul>
+  </div>
+
+  <div class="mdl-layout__content" style="background-color: #E9BFA6">
+    <main>
+      
+  <h2 style="color: #E46964">Kotizkalkulilo</h2>
+
+  <div class="mdl-cell mdl-cell--2-offset-desktop mdl-cell--8-col mdl-cell--1-offset-tablet mdl-cell--6-col-tablet">
+
+  <form id="pricecalc">
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input type="number" class="mdl-textfield__input" id="formAgeInput" name="age" min="0" max="200">
+        <label class="mdl-textfield__label" for="formAgeInput">Kiom vi aĝas?</label>
+        <small class="bmd-help"><em>Via aĝo en jaroj (ekz. 21)</em></small>
+      </div>
+    </div>
+
+    <div class="mdl-selectfield--floating-label mdl-selectfield mdl-js-selectfield mdl-cell mdl-cell--6-col mdl-cell--12-col-phone">
+    <select id="formCountrySelect" class="mdl-selectfield__select">
+        <option value="HU">Hungario</option>
+        <option value="AF">Afganio</option>
+        <option value="AX">Alando</option>
+        <option value="AL">Albanio</option>
+        <option value="DZ">Alĝerio</option>
+        <option value="AD">Andoro</option>
+        <option value="AO">Angolo</option>
+        <option value="AI">Angvilo</option>
+        <option value="AQ">Antarktio</option>
+        <option value="AG">Antigvo-Barbudo</option>
+        <option value="AR">Argentino</option>
+        <option value="AM">Armenio</option>
+        <option value="AW">Arubo</option>
+        <option value="AU">Aŭstralio</option>
+        <option value="AT">Aŭstrio</option>
+        <option value="AZ">Azerbajĝano</option>
+        <option value="BS">Bahamoj</option>
+        <option value="BD">Bangladeŝo</option>
+        <option value="IN">Barato</option>
+        <option value="BB">Barbado</option>
+        <option value="BH">Barejno</option>
+        <option value="BE">Belgio</option>
+        <option value="BZ">Belizo</option>
+        <option value="BY">Belorusio</option>
+        <option value="BJ">Benino</option>
+        <option value="BM">Bermudo</option>
+        <option value="MM">Birmo</option>
+        <option value="BW">Bocvano</option>
+        <option value="BO">Bolivio</option>
+        <option value="BA">Bosnio kaj Hercegovino</option>
+        <option value="BR">Brazilo</option>
+        <option value="IO">Brita Hindoceana Teritorio</option>
+        <option value="VG">Britaj Virgulininsuloj</option>
+        <option value="GB">Britio</option>
+        <option value="BN">Brunejo</option>
+        <option value="BG">Bulgario</option>
+        <option value="BF">Burkino</option>
+        <option value="BI">Burundo</option>
+        <option value="BT">Butano</option>
+        <option value="TD">Ĉado</option>
+        <option value="CZ">Ĉeĥio</option>
+        <option value="CF">Centr-Afrika Respubliko</option>
+        <option value="CL">Ĉilio</option>
+        <option value="CN">Ĉinio</option>
+        <option value="DK">Danio</option>
+        <option value="CD">Demokratia Respubliko Kongo</option>
+        <option value="DO">Domingo</option>
+        <option value="DM">Dominiko</option>
+        <option value="CI">Ebura Bordo</option>
+        <option value="EG">Egiptio</option>
+        <option value="EC">Ekvadoro</option>
+        <option value="GQ">Ekvatora Gvineo</option>
+        <option value="ER">Eritreo</option>
+        <option value="EE">Estonio</option>
+        <option value="ET">Etiopio</option>
+        <option value="FM">Federacio de Mikronezio</option>
+        <option value="FO">Ferooj</option>
+        <option value="FJ">Fiĝioj</option>
+        <option value="PH">Filipinoj</option>
+        <option value="FI">Finnlando</option>
+        <option value="GF">Franca Gviano</option>
+        <option value="PF">Franca Polinezio</option>
+        <option value="FR">Francio</option>
+        <option value="GA">Gabono</option>
+        <option value="GM">Gambio</option>
+        <option value="GH">Ganao</option>
+        <option value="DE">Germanio</option>
+        <option value="GI">Ĝibraltaro</option>
+        <option value="DJ">Ĝibutio</option>
+        <option value="GR">Grekio</option>
+        <option value="GD">Grenado</option>
+        <option value="GL">Gronlando</option>
+        <option value="GY">Gujano</option>
+        <option value="GP">Gvadelupo</option>
+        <option value="GU">Gvamo</option>
+        <option value="GT">Gvatemalo</option>
+        <option value="GW">Gvineo Bisaŭa</option>
+        <option value="GN">Gvineo</option>
+        <option value="HT">Haitio</option>
+        <option value="ES">Hispanio</option>
+        <option value="HN">Honduro</option>
+        <option value="HK">Honkongo</option>
+        <option value="ID">Indonezio</option>
+        <option value="FK">Insuloj Falklandoj</option>
+        <option value="IQ">Irako</option>
+        <option value="IR">Irano</option>
+        <option value="IE">Irlando</option>
+        <option value="IS">Islando</option>
+        <option value="IL">Israelo</option>
+        <option value="IT">Italio</option>
+        <option value="JM">Jamajko</option>
+        <option value="JP">Japanio</option>
+        <option value="YE">Jemeno</option>
+        <option value="JO">Jordanio</option>
+        <option value="CV">Kabo-Verdo</option>
+        <option value="KY">Kajmaninsuloj</option>
+        <option value="KH">Kamboĝo</option>
+        <option value="CM">Kameruno</option>
+        <option value="CA">Kanado</option>
+        <option value="GE">Kartvelio</option>
+        <option value="QA">Kataro</option>
+        <option value="KZ">Kazaĥio</option>
+        <option value="KE">Kenjo</option>
+        <option value="CY">Kipro</option>
+        <option value="KG">Kirgizio</option>
+        <option value="KI">Kiribato</option>
+        <option value="CC">Kokosinsuloj</option>
+        <option value="CO">Kolombio</option>
+        <option value="KM">Komoroj</option>
+        <option value="CR">Kostariko</option>
+        <option value="CX">Kristnaskinsulo</option>
+        <option value="HR">Kroatio</option>
+        <option value="CU">Kubo</option>
+        <option value="CK">Kukinsuloj</option>
+        <option value="KW">Kuvajto</option>
+        <option value="LA">Laoso</option>
+        <option value="LV">Latvio</option>
+        <option value="LS">Lesoto</option>
+        <option value="LB">Libano</option>
+        <option value="LR">Liberio</option>
+        <option value="LY">Libio</option>
+        <option value="LI">Liĥtenŝtejno</option>
+        <option value="LT">Litovio</option>
+        <option value="LU">Luksemburgo</option>
+        <option value="MG">Madagaskaro</option>
+        <option value="YT">Majoto</option>
+        <option value="MO">Makao</option>
+        <option value="MK">Makedonio</option>
+        <option value="MY">Malajzio</option>
+        <option value="MW">Malavio</option>
+        <option value="MV">Maldivoj</option>
+        <option value="ML">Malio</option>
+        <option value="MT">Malto</option>
+        <option value="MA">Maroko</option>
+        <option value="MH">Marŝala Insularo</option>
+        <option value="MQ">Martiniko</option>
+        <option value="MU">Maŭricio</option>
+        <option value="MR">Maŭritanio</option>
+        <option value="MX">Meksiko</option>
+        <option value="MD">Moldavio</option>
+        <option value="MC">Monako</option>
+        <option value="MS">Moncerato</option>
+        <option value="MN">Mongolio</option>
+        <option value="ME">Montenegro</option>
+        <option value="MZ">Mozambiko</option>
+        <option value="NA">Namibio</option>
+        <option value="NR">Nauro</option>
+        <option value="AN">Nederlandaj Antiloj</option>
+        <option value="NL">Nederlando</option>
+        <option value="NP">Nepalo</option>
+        <option value="NG">Niĝerio</option>
+        <option value="NE">Niĝero</option>
+        <option value="NI">Nikaragvo</option>
+        <option value="NU">Niuo</option>
+        <option value="KP">Nord-Koreio</option>
+        <option value="MP">Nord-Marianoj</option>
+        <option value="NF">Norfolkinsulo</option>
+        <option value="NO">Norvegio</option>
+        <option value="NC">Nov-Kaledonio</option>
+        <option value="NZ">Nov-Zelando</option>
+        <option value="EH">Okcidenta Saharo</option>
+        <option value="OM">Omano</option>
+        <option value="TL">Orienta Timoro</option>
+        <option value="PK">Pakistano</option>
+        <option value="PW">Palaŭo</option>
+        <option value="PS">Palestino</option>
+        <option value="PA">Panamo</option>
+        <option value="PG">Papuo-Nov-Gvineo</option>
+        <option value="PY">Paragvajo</option>
+        <option value="PE">Peruo</option>
+        <option value="PN">Pitkarna Insularo</option>
+        <option value="PL">Pollando</option>
+        <option value="PR">Porto-Riko</option>
+        <option value="PT">Portugalio</option>
+        <option value="CG">Respubliko Kongo</option>
+        <option value="RE">Reunio</option>
+        <option value="RW">Ruando</option>
+        <option value="RO">Rumanio</option>
+        <option value="RU">Rusio</option>
+        <option value="SB">Salomonoj</option>
+        <option value="SV">Salvadoro</option>
+        <option value="WS">Samoo</option>
+        <option value="SH">Sankta Heleno</option>
+        <option value="KN">Sankta-Kito kaj Neviso</option>
+        <option value="LC">Sankta Lucio</option>
+        <option value="PM">Sankta-Piero kaj Mikelono</option>
+        <option value="VC">Sankta Vincento kaj la Grenadinoj</option>
+        <option value="SM">San-Marino</option>
+        <option value="ST">Sao-Tomeo kaj Principeo</option>
+        <option value="SA">Sauda Arabio</option>
+        <option value="SC">Sejŝeloj</option>
+        <option value="SN">Senegalo</option>
+        <option value="RS">Serbio</option>
+        <option value="SL">Siera-Leono</option>
+        <option value="SG">Singapuro</option>
+        <option value="SY">Sirio</option>
+        <option value="SK">Slovakio</option>
+        <option value="SI">Slovenio</option>
+        <option value="SO">Somalio</option>
+        <option value="LK">Sri-Lanko</option>
+        <option value="ZA">Sudafriko</option>
+        <option value="SD">Sudano</option>
+        <option value="GS">Sud-Georgio kaj Sud-Sandviĉinsuloj</option>
+        <option value="KR">Sud-Koreio</option>
+        <option value="SR">Surinamo</option>
+        <option value="SZ">Svazilando</option>
+        <option value="SE">Svedio</option>
+        <option value="CH">Svislando</option>
+        <option value="TJ">Taĝikio</option>
+        <option value="TH">Tajlando</option>
+        <option value="TW">Tajvano</option>
+        <option value="TZ">Tanzanio</option>
+        <option value="TG">Togo</option>
+        <option value="TK">Tokelao</option>
+        <option value="TO">Tongo</option>
+        <option value="TT">Trinidado kaj Tobago</option>
+        <option value="TN">Tunizio</option>
+        <option value="TR">Turkio</option>
+        <option value="TM">Turkmenio</option>
+        <option value="TC">Turkoj kaj Kajkoj</option>
+        <option value="TV">Tuvalo</option>
+        <option value="UG">Ugando</option>
+        <option value="UA">Ukrainio</option>
+        <option value="AE">Unuiĝintaj Arabaj Emirlandoj</option>
+        <option value="UY">Urugvajo</option>
+        <option value="UM">Usonaj Malgrandaj Insuloj</option>
+        <option value="VI">Usonaj Virgulininsuloj</option>
+        <option value="AS">Usona Samoo</option>
+        <option value="US">Usono</option>
+        <option value="UZ">Uzbekio</option>
+        <option value="WF">Valiso kaj Futuno</option>
+        <option value="VU">Vanuatuo</option>
+        <option value="VA">Vatikanurbo</option>
+        <option value="VE">Venezuelo</option>
+        <option value="VN">Vjetnamio</option>
+        <option value="ZM">Zambio</option>
+        <option value="ZW">Zimbabvo</option>
+    </select>
+    <div class="mdl-selectfield__icon"><i class="material-icons">arrow_drop_down</i></div>
+    <label for="formCountrySelect" class="mdl-selectfield__label">Lando</label>
+    <small class="text-info" id="country_category_note"></small>
+    </div>
+
+
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input type="number" class="mdl-textfield__input" id="formDaysOfProgramInput" min="1" max="7" name="number_of_days_program" />
+        <label class="mdl-textfield__label" for="formDaysOfProgramInput">Kiom da tagoj vi partoprenos?</label>
+        <small class="bmd-help"><em>inter 1 kaj 7</em></small>
+    </div>
+    </div>
+
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input type="number" class="mdl-textfield__input" id="formNightsOfAccomInput" min="0" max="6" name="number_of_days_accomodation" />
+        <label class="mdl-textfield__label" for="formNightsOfAccomInput">Kiom da noktoj vi loĝos en la IJS-ejo?</label>
+        <small class="bmd-help"><em>inter 0 kaj 6</em></small>
+    </div>
+    </div>
+
+    <fieldset class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone" id="formAccommodationTypeInput">
+      <legend>Mi loĝos en:</legend>
+      <div class="radio">
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="accom" id="accommodation_2_beds_radio" value="2_beds" checked>
+          <span class="mdl-radio__label">Dulita ĉambro</span>
+        </label>
+      </div>
+      <div class="radio">
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="accom" id="accommodation_3_4_beds_radio" value="3_4_beds" >
+          <span class="mdl-radio__label">3-4 lita ĉambro</span>
+        </label>
+      </div>
+      <div class="radio">
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="accom" id="accommodation_6_10_beds_radio" value="6_10_beds" >
+          <span class="mdl-radio__label">6-10 lita ĉambro</span>
+        </label>
+      </div>
+      <div class="radio">
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="accom" id="accommodation_tent_radio" value="tent" >
+          <span class="mdl-radio__label">Propra tendo</span>
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone" id="formPrepayUntilInput">
+      <legend>Mi antaŭpagos(is) ĝis:</legend>
+      <div class="radio">
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="prepay" id="prepay30majo" value="0" checked>
+          <span class="mdl-radio__label">30a de majo 2017</span>
+        </label>
+      </div>
+      <div class="radio">
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="prepay" id="prepay30junio" value="1" >
+          <span class="mdl-radio__label">30a de junio 2017</span>
+        </label>
+      </div>
+      <div class="radio">
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="prepay" id="prepay_no" value="2" >
+          <span class="mdl-radio__label">Sen antaŭpago</span>
+        </label>
+      </div>
+    </fieldset>
+  </div>
+
+  <h4 style="color: #E46964">Selektu viajn manĝojn</h4>
+  <table class="mdl-data-table noselect" id="foodtable" style="width: 100%">
+    <thead>
+      <tr>
+      <th></th>
+      <th class="clickme" onclick="toggle_all_ids('break', 2, 7)"> Matenmanĝo</th>
+      <th class="clickme" onclick="toggle_all_ids('lunch', 2, 6)">Tagmanĝo</th>
+      <th class="clickme" onclick="toggle_all_ids('dinner', 1, 6)">Vespermanĝo</th>
+    </thead>
+    <tbody>
+      <tr>
+      <th class="clickme" scope="row" onclick="toggle_day(1)">7a de aŭgusto</th>
+      <td></td>
+      <td></td>
+      <td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+        <input  class="mdl-checkbox__input" type="checkbox" id="dinner1" value="dinner1"></label></td>
+      </tr>
+      <tr>
+      <th class="clickme" scope="row" onclick="toggle_day(2)">8a de aŭgusto</th>
+      <td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+        <input  class="mdl-checkbox__input" type="checkbox" id="break2"  value="break2" ></label></td>
+      <td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+        <input  class="mdl-checkbox__input" type="checkbox" id="lunch2"  value="lunch2" ></label></td>
+      <td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+        <input  class="mdl-checkbox__input" type="checkbox" id="dinner2" value="dinner2"></label></td>
+      </tr>
+      <tr>
+      <th class="clickme" scope="row" onclick="toggle_day(3)">9a de aŭgusto</th>
+      <td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+        <input  class="mdl-checkbox__input" type="checkbox" id="break3"  value="break3" ></label></td>
+      <td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+        <input  class="mdl-checkbox__input" type="checkbox" id="lunch3"  value="lunch3" ></label></td>
+      <td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+        <input  class="mdl-checkbox__input" type="checkbox" id="dinner3" value="dinner3"></label></td>
+      </tr>
+      <tr>
+      <th class="clickme" scope="row" onclick="toggle_day(4)">10a de aŭgusto</th>
+      <td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+        <input  class="mdl-checkbox__input" type="checkbox" id="break4"  value="break4" ></label></td>
+      <td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+        <input  class="mdl-checkbox__input" type="checkbox" id="lunch4"  value="lunch4" ></label></td>
+      <td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+        <input  class="mdl-checkbox__input" type="checkbox" id="dinner4" value="dinner4"></label></td>
+      </tr>
+      <tr>
+      <th class="clickme" scope="row" onclick="toggle_day(5)">11a de aŭgusto</th>
+      <td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+        <input  class="mdl-checkbox__input" type="checkbox" id="break5"  value="break5" ></label></td>
+      <td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+        <input  class="mdl-checkbox__input" type="checkbox" id="lunch5"  value="lunch5" ></label></td>
+      <td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+        <input  class="mdl-checkbox__input" type="checkbox" id="dinner5" value="dinner5"></label></td>
+      </tr>
+      <tr>
+      <th class="clickme" scope="row" onclick="toggle_day(6)">12a de aŭgusto</th>
+      <td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+        <input  class="mdl-checkbox__input" type="checkbox" id="break6"  value="break6" ></label></td>
+      <td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+        <input  class="mdl-checkbox__input" type="checkbox" id="lunch6"  value="lunch6" ></label></td>
+      <td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+        <input  class="mdl-checkbox__input" type="checkbox" id="dinner6" value="dinner6"></label></td>
+      </tr>
+      <tr>
+      <th class="clickme" scope="row" onclick="toggle_day(7)">13a de aŭgusto</th>
+      <td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+        <input  class="mdl-checkbox__input" type="checkbox" id="break7"  value="break7" ></label></td>
+      <td></td>
+      <td></td>
+      </tr>
+      </tbody>
+  </table>
+
+  <legend>Aldonaj detaloj:</legend>
+  <div class="checkbox">
+    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+      <input class="mdl-checkbox__input" type="checkbox" id="formHEJMemberCheckbox" name="hej_member" value="hej_member">
+      Mi estas ordinara membro de HEJ (nur sub 30).
+    </label>
+  </div>
+
+  <div class="checkbox">
+    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+      <input class="mdl-checkbox__input" type="checkbox" id="formInvitationCheckbox" name="invitation" value="invitation">
+      Mi deziras neoficialan invitleteron.
+    </label>
+  </div>
+
+  <div class="checkbox">
+    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+      <input class="mdl-checkbox__input" type="checkbox" id="formPaypalCheckbox" name="paypal" value="paypal">
+      Mi pagas per Paypal aŭ kreditkarto.
+    </label>
+  </div>
+  <div style="text-align: center">
+    <button type="button" id="calculatedPriceModalToggle" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+      Montru mian kotizon!
+    </button>
+  </div>
+  </form>
+
+  </div>
+
+    </main>
+
+    <footer>
+      <div class="mdl-grid">
+        
+          <div id="id-facebook" class="mdl-cell mdl-cell--3-col mdl-cell--2-col-phone">
+            <a href="https://facebook.com/hungarajunularo" target="_blank">
+              <img src="/static/img/facebook.svg" alt="facebook">
+            </a>
           </div>
-          <div class="radio">
-            <label>
-              <input type="radio" name="accom" id="accommodation_3_4_beds_radio" value="3_4_beds" >
-              3-4 lita ĉambro
-            </label>
+          <div class="mdl-tooltip mdl-tooltip--large" data-mdl-for="id-facebook">Facebook</div>
+        
+          <div id="id-twitter" class="mdl-cell mdl-cell--3-col mdl-cell--2-col-phone">
+            <a href="https://twitter.com/IJSenHungario" target="_blank">
+              <img src="/static/img/twitter.svg" alt="twitter">
+            </a>
           </div>
-          <div class="radio">
-            <label>
-              <input type="radio" name="accom" id="accommodation_6_10_beds_radio" value="6_10_beds" >
-              6-10 lita ĉambro
-            </label>
+          <div class="mdl-tooltip mdl-tooltip--large" data-mdl-for="id-twitter">Twitter</div>
+        
+          <div id="id-telegram" class="mdl-cell mdl-cell--3-col mdl-cell--2-col-phone">
+            <a href="https://telegram.me/joinchat/ED7aZ0C43esOgFktc1lqAw" target="_blank">
+              <img src="/static/img/telegram.svg" alt="telegram">
+            </a>
           </div>
-          <div class="radio">
-            <label>
-              <input type="radio" name="accom" id="accommodation_tent_radio" value="tent" >
-              Propra tendo
-            </label>
+          <div class="mdl-tooltip mdl-tooltip--large" data-mdl-for="id-telegram">Telegram</div>
+        
+          <div id="id-instagram" class="mdl-cell mdl-cell--3-col mdl-cell--2-col-phone">
+            <a href="https://instagram.com/hungarajunularo" target="_blank">
+              <img src="/static/img/instagram.svg" alt="instagram">
+            </a>
           </div>
-        </fieldset>
+          <div class="mdl-tooltip mdl-tooltip--large" data-mdl-for="id-instagram">Instagram</div>
+        
+      </div>
+      <br><br>
+      &copy; Kopirajtoj 2017 - HEJ/MIESZ
+    </footer>
+  </div>
 
-        <fieldset class="form-group" id="formPrepayUntilInput">
-          <legend>Mi antaŭpagos(is) ĝis:</legend>
-          <div class="radio">
-            <label>
-              <input type="radio" name="prepay" id="prepay30majo" value="0" checked>
-              30a de majo 2017
-            </label>
-          </div>
-          <div class="radio">
-            <label>
-              <input type="radio" name="prepay" id="prepay30junio" value="1" >
-              30a de junio 2017
-            </label>
-          </div>
-          <div class="radio">
-            <label>
-              <input type="radio" name="prepay" id="prepay_no" value="2" >
-              Sen antaŭpago
-            </label>
-          </div>
-        </fieldset>
+  <script src="../static/dialog-polyfill.js" type="text/javascript"></script>
+</div>
 
-        <h3>Selektu viajn manĝojn:</h3>
-        <table class="table noselect" id="foodtable">
-          <thead>
-            <tr>
-            <th></th>
-            <th class="clickme" onclick="toggle_all_ids('break', 2, 7)"> Matenmanĝo</th>
-            <th class="clickme" onclick="toggle_all_ids('lunch', 2, 6)">Tagmanĝo</th>
-            <th class="clickme" onclick="toggle_all_ids('dinner', 1, 6)">Vespermanĝo</th>
-          </thead>
-          <tbody>
-            <tr>
-            <th class="clickme" scope="row" onclick="toggle_day(1)">7a de aŭgusto</th>
-            <td></td>
-            <td></td>
-            <td><div class="checkbox"><label><input type="checkbox" id="dinner1" value="dinner1"></label></div></td>
-            </tr>
-            <tr>
-            <th class="clickme" scope="row" onclick="toggle_day(2)">8a de aŭgusto</th>
-            <td><div class="checkbox"><label><input type="checkbox" id="break2"  value="break2" ></label></div></td>
-            <td><div class="checkbox"><label><input type="checkbox" id="lunch2"  value="lunch2" ></label></div></td>
-            <td><div class="checkbox"><label><input type="checkbox" id="dinner2" value="dinner2"></label></div></td>
-            </tr>
-            <tr>
-            <th class="clickme" scope="row" onclick="toggle_day(3)">9a de aŭgusto</th>
-            <td><div class="checkbox"><label><input type="checkbox" id="break3"  value="break3" ></label></div></td>
-            <td><div class="checkbox"><label><input type="checkbox" id="lunch3"  value="lunch3" ></label></div></td>
-            <td><div class="checkbox"><label><input type="checkbox" id="dinner3" value="dinner3"></label></div></td>
-            </tr>
-            <tr>
-            <th class="clickme" scope="row" onclick="toggle_day(4)">10a de aŭgusto</th>
-            <td><div class="checkbox"><label><input type="checkbox" id="break4"  value="break4" ></label></div></td>
-            <td><div class="checkbox"><label><input type="checkbox" id="lunch4"  value="lunch4" ></label></div></td>
-            <td><div class="checkbox"><label><input type="checkbox" id="dinner4" value="dinner4"></label></div></td>
-            </tr>
-            <tr>
-            <th class="clickme" scope="row" onclick="toggle_day(5)">11a de aŭgusto</th>
-            <td><div class="checkbox"><label><input type="checkbox" id="break5"  value="break5" ></label></div></td>
-            <td><div class="checkbox"><label><input type="checkbox" id="lunch5"  value="lunch5" ></label></div></td>
-            <td><div class="checkbox"><label><input type="checkbox" id="dinner5" value="dinner5"></label></div></td>
-            </tr>
-            <tr>
-            <th class="clickme" scope="row" onclick="toggle_day(6)">12a de aŭgusto</th>
-            <td><div class="checkbox"><label><input type="checkbox" id="break6"  value="break6" ></label></div></td>
-            <td><div class="checkbox"><label><input type="checkbox" id="lunch6"  value="lunch6" ></label></div></td>
-            <td><div class="checkbox"><label><input type="checkbox" id="dinner6" value="dinner6"></label></div></td>
-            </tr>
-            <tr>
-            <th class="clickme" scope="row" onclick="toggle_day(7)">13a de aŭgusto</th>
-            <td><div class="checkbox"><label><input type="checkbox" id="break7"  value="break7" ></label></div></td>
-            <td></td>
-            <td></td>
-            </tr>    
-            </tbody>
-        </table>     
-                     
-        <legend>Aldonaj detaloj:</legend>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" id="formHEJMemberCheckbox" name="hej_member" value="hej_member">
-            Mi estas ordinara membro de HEJ (nur sub 30).
-          </label>
-        </div>   
-                 
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" id="formInvitationCheckbox" name="invitation" value="invitation">
-            Mi deziras neoficialan invitleteron.
-          </label>
-        </div>   
-                 
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" id="formPaypalCheckbox" name="paypal" value="paypal">
-            Mi pagas per Paypal aŭ kreditkarto.
-          </label>
-        </div>   
+  
+  <!-- Modal for calculated price -->
+  <dialog class="mdl-dialog" id="calculatedPriceModal" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="mdl-dialog__title">
+      <h3 style="color: #E46964" id="modalLabel">Kotizo</h3>
+    </div>
+    <div class="mdl-dialog__content">
+      <div class="mdl-components__warning" role="alert">
+        <strong>Memoru!</strong> Por partopreni la aranĝon, vi ankorŭ devas aliĝi!
+      </div>
 
-        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#calculatedPriceModal">Montru mian kotizon!</button>
+      <dl class="row">
+        <dt class="col-sm-5">Programkotizo:</dt>
+        <dd class="col-sm-6" id="program_cost"></dd>
 
-        </form>  
-                 
-        </div>   
-        </div>   
-        </div>
+        <dt class="col-sm-5">Loĝado:</dt>
+        <dd class="col-sm-6" id="accom_cost"></dd>
 
-        <!-- Modal for calculated price -->
-        <div class="modal fade" id="calculatedPriceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="modalLabel">Kotizo</h4>
-              </div>
-              <div class="modal-body">
-                <div class="alert alert-info alert-dismissible fade in" role="alert">
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  <strong>Memoru!</strong> Por partopreni la aranĝon, vi ankorŭ devas aliĝi!
-                </div>
+        <dt class="col-sm-5">Manĝoj:</dt>
+        <dd class="col-sm-6" id="food_cost"></dd>
 
-                <dl class="row">
-                  <dt class="col-sm-5">Programkotizo:</dt>
-                  <dd class="col-sm-6" id="program_cost"></dd>
+        <dt class="col-sm-5">HEJ rabato:</dt>
+        <dd class="col-sm-6" id="hej_discount"></dd>
 
-                  <dt class="col-sm-5">Loĝado:</dt>
-                  <dd class="col-sm-6" id="accom_cost"></dd>
+        <dt class="col-sm-5">Neoficiala invitletero:</dt>
+        <dd class="col-sm-6" id="invitation_cost"></dd>
 
-                  <dt class="col-sm-5">Manĝoj:</dt>
-                  <dd class="col-sm-6" id="food_cost"></dd>
+        <dt class="col-sm-5">Paypal / kreditkarto:</dt>
+        <dd class="col-sm-6" id="paypal_charge"></dd>
+      </dl>
+      <h3><small class="text-muted">Via tuta kotizo estas </small> <span id="total_cost"></span></h3>
 
-                  <dt class="col-sm-5">HEJ rabato:</dt>
-                  <dd class="col-sm-6" id="hej_discount"></dd>
+    </div>
+    <div class="mdl-dialog__actions">
+      <button type="button" class="mdl-button close">Fermi</button>
+    </div>
+  </dialog>
 
-                  <dt class="col-sm-5">Neoficiala invitletero:</dt>
-                  <dd class="col-sm-6" id="invitation_cost"></dd>
 
-                  <dt class="col-sm-5">Paypal / kreditkarto:</dt>
-                  <dd class="col-sm-6" id="paypal_charge"></dd>
-                </dl>
-                <h3><small class="text-muted">Via tuta kotizo estas </small><span id="total_cost"></span></h3>
-
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermi</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-        <script src="https://cdn.rawgit.com/HubSpot/tether/v1.3.4/dist/js/tether.min.js"></script>
-        <script src="https://cdn.rawgit.com/FezVrasta/bootstrap-material-design/dist/dist/bootstrap-material-design.iife.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>
-        <script>
-          $('body').bootstrapMaterialDesign();
-        </script>
-    </body>
+</body>
 </html>
