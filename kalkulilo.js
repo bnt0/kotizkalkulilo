@@ -82,6 +82,12 @@ function populate_cost_fields() {
     var hej_discount  = getHEJDiscount(is_hej_member, days_program);
     document.getElementById("hej_discount").innerHTML = hej_discount;
 
+    // Student discount
+    var is_student = $('#formStudentCheckbox').is(':checked');
+    console.log('student', is_student);
+    var STUDENT_DISCOUNT_VALUE = 10;
+    var student_discount = is_student ? STUDENT_DISCOUNT : 0;
+
     // Unofficial invitation letter
     var is_invitation = $('#formInvitationCheckbox').is(':checked');
     console.log('Invitation', is_invitation);
@@ -90,7 +96,7 @@ function populate_cost_fields() {
 
     // Add up total cost without paypal charge
     // Round to 0 if negative
-    var total_cost_no_paypal = program_cost + accom_cost + food_cost + invitation_cost - hej_discount;
+    var total_cost_no_paypal = program_cost + accom_cost + food_cost + invitation_cost - hej_discount - student_discount;
     total_cost_no_paypal = total_cost_no_paypal < 0 ? 0 : total_cost_no_paypal;
 
     // Paypal charge
